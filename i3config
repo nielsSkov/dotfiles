@@ -184,8 +184,8 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 # Additional Touchpad Settings
 # following settings found width: xinput --list-props 12
 # 12 is the id of the touchpad, and is found width: xinput --list --short
-exec --no-startup-id xinput set-prop 12 291 0, 0, 0, 0, 1
-exec --no-startup-id xinput set-prop 12 272 1
+#exec --no-startup-id xinput set-prop 12 291 0, 0, 0, 0, 1
+#exec --no-startup-id xinput set-prop 12 272 1
 
 # Set screenshot shortcut and save in ~/Pictures/screenshots/ with date
 #

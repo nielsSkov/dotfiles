@@ -1,0 +1,7 @@
+# Additional Touchpad Settings
+# following settings found width: xinput --list-props 12
+# 12 is the id of the touchpad, and is found width: xinput --list --short
+xinput --set-prop 12 291 0, 0, 0, 0, 1
+xinput --set-prop 12 272 1
+
+exec i3
