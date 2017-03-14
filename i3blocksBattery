@@ -1,0 +1,107 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use utf8;
+
+my $acpi;
+my $status;
+my $percent;
+my $full_text;
+my $short_text;
+my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+
+my $batLimLow  = 25;
+my $batLim2    = 30;
+my $batLim3    = 40;
+my $batLim4    = 50;
+my $batLimHigh = 100;
+
+# read the first line of the "acpi" command output
+open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
+$acpi = <ACPI>;
+close(ACPI);
+
+# fail on unexpected output
+if ($acpi !~ /: (\w+), (\d+)%/) {
+	die "$acpi\n";
+}
+#-----Perl Regular Expressions Used Above---------------------------------
+#
+#  $acpi !~  true if the following doesnt match acpi
+#  / /       search for matches
+#  ( )       record match in $1, $2, $3, etc.
+#  \w        match any single character classified as a "word" character
+#  +         match one or more times
+#  \d        match any digit character
+#
+#  EXAMPLE:
+#  $acpi = Battery 0: Discharging, 52%, 01:48:42 remaining
+#
+#  Breaking it Down:
+#  srch.str.: Battery 0:  Discharging   ,         52       %
+#  reg.expr.: /        :     (\w+)      ,       (\d+)      %     /
+#             ↑        ↑       ↑        ↑         ↑        ↑     ↑
+#      start search    |   found word   |    found digits  |   end search
+#                 found colon  |   found comma    |     found %
+#                           record             record
+#                              ↓                  ↓                                             
+#                           $1 = Discharging   $2 = 52
+#
+#-------------------------------------------------------------------------
+
+$status = $1;
+$percent = $2;
+$full_text = "$percent%";
+
+if ($status eq 'Discharging') {
+
+        if ($percent < $batLimLow ) {
+                $full_text .= ' ';
+        } elsif ($percent < $batLim2 )  {
+                $full_text .= ' ';
+        } elsif ($percent < $batLim3 )  {
+                $full_text .= ' ';
+        } elsif ($percent < $batLim4 )  {
+                $full_text .= ' ';
+        } elsif ($percent <= $batLimHigh ){
+                $full_text .= ' ';
+        }
+
+} elsif ($status eq 'Charging' || 'Full') {
+	$full_text .= ' ';
+}
+
+$short_text = $full_text;
+
+if ($acpi =~ /(\d\d:\d\d):/) {
+	$full_text .= " ($1)";
+}
+
+# print text
+print "$full_text\n";
+print "$short_text\n";
+
+# consider color and urgent flag
+if ($status eq 'Discharging') {
+
+	if ($percent < $batLim2) {
+		print "#FF0000\n";
+	} elsif ($percent < $batLim3) {
+		print "#FFAE00\n";
+	} elsif ($percent < $batLim4) {
+		print "#FFF600\n";
+	} elsif ($percent <= $batLimHigh) {
+		print "#66FF66\n";
+	}
+
+	if ($percent < $batLimLow) {
+		exit(33);
+	}
+
+} elsif ($status eq 'Charging' || 'Full') {
+	print "#66FF66\n";
+}
+
+exit(0);
+

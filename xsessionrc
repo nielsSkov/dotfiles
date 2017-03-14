@@ -4,4 +4,9 @@
 xinput --set-prop 12 291 0, 0, 0, 0, 1
 xinput --set-prop 12 272 1
 
+# Settings to Prevent the Screen from Turning Off
+xset s off       # screensaver off
+xset -dpms       # disable DPMS
+xset s noblank   # blanking of video device off
+
 exec i3
