@@ -1,12 +1,28 @@
-# Additional Touchpad Settings
+# Touchpad Settings
+#
 # following settings found width: xinput --list-props 12
 # 12 is the id of the touchpad, and is found width: xinput --list --short
-xinput --set-prop 12 291 0, 0, 0, 0, 1
-xinput --set-prop 12 272 1
+#
+# Enable Tap Action
+xinput --set-prop 'ETPS/2 Elantech Touchpad' 'Synaptics Tap Action' 0, 0, 0, 0, 1
+#
+# Set Speed of Pointer
+xinput --set-prop 'ETPS/2 Elantech Touchpad' 'Device Accel Constant Deceleration' 1
+#
+# Enable Palm Detection
+xinput --set-prop 'ETPS/2 Elantech Touchpad' 'Synaptics Palm Detection' 1
 
 # Settings to Prevent the Screen from Turning Off
+#
 xset s off       # screensaver off
 xset -dpms       # disable DPMS
 xset s noblank   # blanking of video device off
+
+# > This option was originally set because the screen has 138x139 dpi,
+#   however this made everything appear far too bigon the screen,
+#   which is why the default setting is kept, that is, 96x96 dpi
+# > you can check the current dpi with: $ xdpyinfo |grep resolution
+#
+# xrandr --dpi 138/eDP1
 
 exec i3
