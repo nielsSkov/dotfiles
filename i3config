@@ -237,3 +237,12 @@ exec --no-startup-id compton -e.5
 gaps inner 17
 gaps outer -4
 
+
+# this works for basic connection of VGA, with default
+# settings and output placed to the right of the primary.
+# xrandr --output eDP-1 --primary --auto --output VGA-1 --right-of eDP-1 --auto
+
+# this works for connection of HDMI-1, witht default
+# settings, output plased to the right of the primary and rotated left.
+# xrandr --output eDP-1 --primary --auto --output HDMI-1 --right-of eDP-1 --auto --rotate left
+
