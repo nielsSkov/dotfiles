@@ -1,5 +1,6 @@
-#create a symlink in /var/lib/AccountsService/users/niels #gitIgnoreThisLine
+#create a symlink in /var/lib/AccountsService/users/ 
 [User]
+Icon=/home/ /Pictures/avatar.jpg
 Language=en_US.utf8
 XSession=i3
 SystemAccount=false
