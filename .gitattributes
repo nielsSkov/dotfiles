@@ -1,4 +1,1 @@
-*.txsprofile filter=dir1
-*.texprofile filter=dir2
-*.texprofile filter=dir3
-{niels} filter=avatar
+niels filter=avatar
