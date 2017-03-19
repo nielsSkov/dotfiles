@@ -1,0 +1,9 @@
+[filter "dir1"]
+	clean = sed '/Files\\Last$/'d
+	smudge = cat
+[filter "dir2"]
+	clean = sed '/Files\\Recent$/'d
+	smudge = cat
+[filter "dir3"]
+	clean = sed '/Spell\\DictionaryDir$/'d
+	smudge = cat
