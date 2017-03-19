@@ -8,5 +8,5 @@
 	clean = sed '/^Spell\\DictionaryDir/'d
 	smudge = cat
 [filter "dir4"]
-	clean = sed '/^Icon/'d
+	clean = sed '/^Icon/ d'
 	smudge = cat
