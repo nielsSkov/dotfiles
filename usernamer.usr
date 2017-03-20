@@ -1,0 +1,6 @@
+#create a symlink in /var/lib/AccountsService/users/username
+[User]
+Icon=/home/username/Pictures/avatar.jpg
+Language=en_US.utf8
+XSession=i3
+SystemAccount=false
