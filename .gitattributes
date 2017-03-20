@@ -1,1 +1,3 @@
-*.niels filter=avatar
+*.usr filter=removeUserName1
+*.txsprofile filter=removeUserNameTxsprofile
+*.conf filter=removeUserNameConf

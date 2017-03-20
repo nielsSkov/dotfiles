@@ -1,0 +1,19 @@
+# this can be added to config in .git
+
+#[filter "all"]
+#       clean = "sed -e '/#gitIgnoreThisLine/ d'"
+#        smudge = cat
+[filter "removeUserNameUsr"]
+        clean = "sed -e 's/usrname/usersname/'"
+        smudge = cat
+[filter "removeUserNameTxsprofile"]
+        clean = "sed -e 's/usrname/username/'"
+        smudge = cat
+[filter "removeUserNameConf]
+        clean = "sed -e 's/usrname/username/'"
+        smudge = cat
+
+# replace usrname with your actual username
+# to have it replaced with username on git :)
+
+# also remember to create the cooresponding .gitattributes
