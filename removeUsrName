@@ -1,3 +1,9 @@
+# NOTE: If the files are already on git with the part
+#       that needs being excluded, it will not work.
+#	To include these properly, move them out of
+#	the directory commit, then back in, and all
+#	exceptions should take effect.
+
 # this can be added to config in .git
 
 #[filter "all"]
