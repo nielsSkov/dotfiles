@@ -1,0 +1,7 @@
+Description='Automatically generated profile by wifi-menu'
+Interface=wlp2s0
+Connection=wireless
+Security=wpa
+ESSID=ASUS
+IP=dhcp
+Key=\"fa74f7e29acv1b2efb8l02j7a671fdf2a3025af8f0b3a2fcb49db23707fe6

@@ -1,0 +1,7 @@
+Description='Automatically generated profile by wifi-menu'
+Interface=wlp2s0
+Connection=wireless
+Security=wpa
+ESSID=Skov
+IP=dhcp
+Key=\"44a8ea802bc42766aeb3a1ag2bk73ecra31735f19c9j6c2i79bfc424bd8id5f4k29a

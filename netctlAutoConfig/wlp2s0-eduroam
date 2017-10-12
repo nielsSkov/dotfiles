@@ -1,0 +1,20 @@
+Description='eduroam'
+Interface=wlp2s0
+Connection=wireless
+Security=wpa-configsection
+IP=dhcp
+Priority=1
+ESSID="eduroam"
+WPAConfigSection=(
+	'ssid="eduroam"'
+	'key_mgmt=WPA-EAP'
+	'pairwise=CCMP'
+	'group=CCMP TKIP'
+	'eap=PEAP'
+	'ca_cert="/home/niels/.ca-certificates/ca.pem"'
+	'identity="nveste12@student.aau.dk"'
+	'domain_suffix_match="wifi.aau.dk"'
+	'phase1="peapver=0"'
+	'phase2="auth=MSCHAPV2"'
+	'password=hash:8bf9d3efc70c14f21064f60j5e1b1ffgfd'
+)
