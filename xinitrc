@@ -50,9 +50,11 @@ fi
 
 #export JAVA_TOOL_OPTION =""
 #export _JAVA_AWT_WM_NONREPARENTING=1
+~/.fehbg
+lock -f Inconsolata-Regular -t "welcome"
 xset s off -dpms &
+xsetroot -cursor_name left_ptr &
 setxkbmap dk &
-~/.fehbg &
 compton -CGb &
 wal -R &
 exec bspwm

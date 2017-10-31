@@ -1,0 +1,18 @@
+[Unit]
+Description=Starts lock at suspend
+Before=sleep.target
+
+[Service]
+User=%I
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/local/bin/lock -f Inconsolata-Regular -t "welcome back"
+
+[Install]
+WantedBy=suspend.target
+
+#place in
+#etc/systemd/system/suspendlock@anders.service
+#
+#activate by
+#sudo systemctl enable suspendlock@niels

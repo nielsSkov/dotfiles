@@ -1,0 +1,17 @@
+#copy the following getty service
+cp /usr/lib/systemd/system/getty@.service /etc/systemd/system/autologin@.service
+
+#in the new file (autologin@.service), change the ExecStart line to the following,
+ExecStart=-/sbin/agetty --autologin niels %I $TERM
+
+#save the old link, if you want
+mv /etc/systemd/system/getty.target.wants/getty@tty1.service /etc/systemd/system/getty.target.wants/getty@tty1.service.old
+
+#create a symbolic link to apply the new service
+ln -s /etc/systemd/system/autologin@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
+
+#make sure that the ~/.bash_profile contains,
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    exec startx
+fi
+
