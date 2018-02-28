@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CACHE="$HOME/.dmenu_cache_recent"
 

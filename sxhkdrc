@@ -9,8 +9,8 @@ super + Return
 	lilyterm
 
 # program launcher
-super + @space
-	bash /home/$USER/dotfiles/dmenu.sh &
+super + space
+	$HOME/dotfiles/dmenu.sh &
 #	dmenu_run
 
 # make sxhkd reload its configuration files:
@@ -129,11 +129,20 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
+#
 # volume control
+#
+
 XF86AudioRaiseVolume
 	amixer set Master 5%+
 XF86AudioLowerVolume
 	amixer set Master 5%-
 XF86AudioMute
 	amixer set Master toggle
+
+#
+# display control
+#
+
+XF86Display
+  $HOME/dotfiles/displaySetup.sh
