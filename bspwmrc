@@ -9,20 +9,23 @@ HDMI=$(cat /sys/class/drm/card0-HDMI-A-1/status)
 
 #assign desktops to primaty and VGA display
 if [ $VGA == "connected" ]; then
-  bspc monitor eDP-1 -d 1 2 3 4 5 6 7
-  bspc monitor VGA-1 -d 8 9 10
+  bspc monitor VGA-1 -s eDP-1
+  bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8
+  bspc monitor VGA-1 -d 9 10
 fi
 
 #assign desktops to primary and HDMI display
 if [ $HDMI == "connected" ]; then 
-  bspc monitor eDP-1 -d 1 2 3 4 5 6 7
-  bspc monitor HDMI-1 -d 8 9 10
+  bspc monitor eDP-1  -d 1 2 3 4 5 6 7 8
+  bspc monitor HDMI-1 -d 9 10
 fi
 
 #assign all desktops to primary screen when no other displays are connected
 if [ $HDMI == "disconnected" ] && [ $VGA == "disconnected" ]; then
-  bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+  bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
 fi
+
+bspc config click_to_focus  true
 
 bspc config border_width         2
 bspc config window_gap          12

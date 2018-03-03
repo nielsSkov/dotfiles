@@ -41,7 +41,7 @@ if [ $VGA == "connected" ]; then
 elif [ $HDMI == "connected" ]; then
   xrandr --output eDP-1 --primary --auto --output HDMI-1 --right-of eDP-1 --auto --rotate left &
 else
-  xrandr --auto &
+  xrandr --output eDP-1 --primary --auto --output HDMI-1 --off --output VGA-1 --off
 fi
 
 #set background and terminal color scheme

@@ -90,9 +90,29 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+####### focus or send to the given desktop #############
+                                                       #
+super + {_,shift + }{1-7,0}                            #
+	bspc {desktop -f,node -d} '^{1-7,8}'                 #
+                                                       #
+super + {_,shift + }{8,9}                              #
+	bspc {desktop -f,node -d} '^{9,10}'                  #
+                                                       #
+######## IMPORTANT NOTE ################################
+#                                                      #
+#  This setup assigns keyboard shortcuts to desktops,  #
+#  however, it also swiches the "normal"               #
+#  keyboard-desktop association, such that,            #
+#  shortcut 8 accesses desktop 10 and                  #
+#  shortcut 0 accesses desktop 8                       #
+#  This is a way to achieve the folloing setup         #
+#  (as persived by user)                               #
+#                                                      #
+#  display:   desktops:                                #
+#  primary    1 2 3 4 5 6 7     0                      #
+#  secondary                8 9                        #
+#                                                      #
+########################################################
 
 #
 # preselect

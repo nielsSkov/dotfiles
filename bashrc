@@ -9,7 +9,7 @@ wmname LG3D 2>/dev/null
 #export _JAVA_AWT_WM_NONREPARENTING=1 &
 
 #fix OpenGL issue
-export LIBGL_DRI3_DISABLE=1 &
+export LIBGL_DRI3_DISABLE=1 2>/dev/null
 
 (wal -rt &)
 export LC_ALL=en_US.UTF-8
