@@ -45,7 +45,8 @@ else
 fi
 
 #set background and terminal color scheme
-wal -i "$HOME/pictures/wallpapers/moss.jpg"
+wallpaper=$HOME/pictures/wallpapers/mistyForrest.jpg
+wal -i "$wallpaper"
 (wal -rt)
 
 #lock screen on startup
