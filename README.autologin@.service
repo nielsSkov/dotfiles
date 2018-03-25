@@ -1,17 +1,18 @@
-#copy the following getty service
-cp /usr/lib/systemd/system/getty@.service /etc/systemd/system/autologin@.service
+[Unit]
+Description=Starts lock at suspend
+Before=sleep.target
 
-#in the new file (autologin@.service), change the ExecStart line to the following,
-ExecStart=-/sbin/agetty --autologin niels %I $TERM
+[Service]
+User=%I
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=$Home/dotfiles/lock.sh --text "welcome back"
 
-#save the old link, if you want
-mv /etc/systemd/system/getty.target.wants/getty@tty1.service /etc/systemd/system/getty.target.wants/getty@tty1.service.old
+[Install]
+WantedBy=suspend.target
 
-#create a symbolic link to apply the new service
-ln -s /etc/systemd/system/autologin@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
-
-#make sure that the ~/.bash_profile contains,
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    exec startx
-fi
-
+#place in
+#etc/systemd/system/suspendlock@anders.service
+#
+#activate by
+#sudo systemctl enable suspendlock@niels

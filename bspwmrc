@@ -41,5 +41,5 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 #External Rules
-$HOME/dotfiles/externalRules/matlabRule.sh
 bspc config external_rules_command $HOME/dotfiles/externalRules/splitRule.sh
+$HOME/dotfiles/externalRules/matlabRule.sh

@@ -5,6 +5,9 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+#set background and terminal color scheme
+export wallpaper="$HOME/pictures/wallpapers/mistyForrest.jpg"
+
 # merge in defaults and keymaps
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
@@ -44,13 +47,11 @@ else
   xrandr --output eDP-1 --primary --auto --output HDMI-1 --off --output VGA-1 --off
 fi
 
-#set background and terminal color scheme
-wallpaper=$HOME/pictures/wallpapers/mistyForrest.jpg
 wal -i "$wallpaper"
 (wal -rt)
 
 #lock screen on startup
-lock -f Inconsolata-Regular -t "welcome" -- scrot -q 100
+$HOME/dotfiles/lock.sh --text "welcome"
 
 #disable screen timeout
 xset s off -dpms &

@@ -3,6 +3,13 @@
 " tab=spaces; tab=2spaces; indentation(e.g.>>)=2spaces
 set expandtab tabstop=2 shiftwidth=2
 
+" plugins
+call plug#begin('~/.vim/plugIn')
+Plug '$HOME/build/wal.vim'
+call plug#end()
+
+colorscheme wal
+
 " --------------- FROM ARCH DEFAULT VIMRC -------------------------------------------
 
 " Normally we use vim-extensions. If you want true vi-compatibility

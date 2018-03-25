@@ -19,7 +19,7 @@ super + Escape
 
 # lock screen (mode_switch = AltGr)
 mode_switch + l
-	lock -f Inconsolata-Regular -t "you know what to do"
+	$HOME/dotfiles/lock.sh --text "you know what to do"
 
 #
 # bspwm hotkeys
