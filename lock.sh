@@ -19,10 +19,12 @@ convert $HOME/.lockShot/lock.png \
         $HOME/.lockShot/lock.png
 
 convert -size 400x$textSize xc:none -gravity center \
-        -font Inconsolata-Regular -pointsize $textSize -stroke black -strokewidth 4 -annotate +0+0 "$text" \
-        -background none -shadow 85x3+0+0 +repage \
-        -font Inconsolata-Regular -pointsize $textSize -stroke none -fill $textColor -annotate +0+0 "$text" \
-        $HOME/.lockShot/lock.png +swap -gravity center -geometry +0+160 \
+        -font Inconsolata-Regular -pointsize $textSize \
+          -stroke black -strokewidth 4 -annotate +0+0 "$text" \
+          -background none -shadow 85x3+0+0 +repage \
+        -font Inconsolata-Regular -pointsize $textSize \
+          -stroke none -fill $textColor -annotate +0+0 "$text" \
+        $HOME/.lockShot/lock.png +swap -gravity northeast -geometry +595+600 \
         -composite $HOME/.lockShot/lock.png
 
 param=( "-k" \

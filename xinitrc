@@ -42,7 +42,7 @@ HDMI=$(cat /sys/class/drm/card0-HDMI-A-1/status)
 if [ $VGA == "connected" ]; then
   xrandr --output eDP-1 --primary --auto --output VGA-1 --left-of eDP-1 --auto --rotate left &
 elif [ $HDMI == "connected" ]; then
-  xrandr --output eDP-1 --primary --auto --output HDMI-1 --right-of eDP-1 --auto --rotate left &
+  xrandr --output eDP-1 --primary --auto --output HDMI-1 --left-of eDP-1 --auto --rotate left &
 else
   xrandr --output eDP-1 --primary --auto --output HDMI-1 --off --output VGA-1 --off
 fi

@@ -14,8 +14,9 @@ fi
 
 #set up screen if HDMI-1 screen is connected
 if [ $HDMI == "connected" ]; then
-  xrandr --output eDP-1 --primary --auto --output HDMI-1 --right-of eDP-1 --auto --rotate left
+  xrandr --output eDP-1 --primary --auto --output HDMI-1 --left-of eDP-1 --auto --rotate left
   wal -q -t -i $wallpaper
+  bspc monitor HDMI-1 -s eDP-1
   bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8
   bspc monitor HDMI-1 -d 9 10
 fi
