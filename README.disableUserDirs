@@ -1,0 +1,8 @@
+#TO DISABLE AUTO GENERATED DIRECTORIES IN $HOME
+sudo pacman -S xdg-user-dirs
+rm ~/.config/user-dirs.dirs
+sudo vim /etc/xdg/user-dirs.conf
+  #change
+  enabled=True
+  #to
+  enabled=False

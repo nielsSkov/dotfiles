@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugIn')
 Plug '$HOME/build/wal.vim'
 call plug#end()
 
-colorscheme wal
+" colorscheme wal
 
 " --------------- FROM ARCH DEFAULT VIMRC -------------------------------------------
 
