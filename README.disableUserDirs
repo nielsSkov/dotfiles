@@ -1,8 +1,13 @@
 #TO DISABLE AUTO GENERATED DIRECTORIES IN $HOME
 sudo pacman -S xdg-user-dirs
-rm ~/.config/user-dirs.dirs
+vim ~/.config/user-dirs.dirs
+  #only content should be
+  XDG_DESKTOP_DIR="$HOME/"
+
 sudo vim /etc/xdg/user-dirs.conf
   #change
   enabled=True
   #to
   enabled=False
+
+#manually choose decired download directory in firefox

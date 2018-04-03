@@ -1,0 +1,11 @@
+#install dropbox in different directory than default $HOME
+HOME=/home/$USER/syncDrive/ pacaur -S dropbox
+
+#start dropbox in same directory
+HOME=/home/$USER/syncDrive/ /opt/dropbox/dropbox &
+
+#remove existing symlink
+sudo rm /usr/bin/dropbox
+
+#create new symlink that starts dropbox in same directory
+sudo ln -s /home/$USER/dotfiles/dropbox /usr/bin/dropbox
