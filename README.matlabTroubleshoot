@@ -1,0 +1,20 @@
+cd(matlabroot)
+cd bin/glnxa64
+!./MATLABWindow -h --disable-gpu
+
+cd(matlabroot)
+cd bin/glnxa64
+!./MATLABWindow -url=http://mathworks.com --disable-gpu
+
+#should give same result (just two commands that effectively does the same thing)
+
+#when everything works, you might still see something like,
+#  ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox!
+
+#Any libraries which causes errors should be downgraded
+#and added to the ignore list in /etc/pacman.conf
+#This can also be achieved using the arch aur 'downgrade' package
+
+#At moment of writing I have downgraded following libraries,
+#  pango
+#  atk

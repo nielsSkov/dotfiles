@@ -1,0 +1,9 @@
+#in file /etc/pacman.conf
+#
+#  IgnorePkg =        # REASON
+#                     #
+#      arduino        # isp programming
+#      avrdude        # isp programming
+#      pango          # matlab graphics
+#      atk            # matlab graphics
+#      ghostscript    # inkscape LaTeX rendering
