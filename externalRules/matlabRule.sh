@@ -1,9 +1,9 @@
 #! /bin/sh
 
 #listen for new and terminated nodes (windows)
-bspc subscribe node_manage | while read line; do
+bspc subscribe node_add | while read line; do
 
-  nodeID=$(echo $line | cut -d' ' -f4)
+  nodeID=$(echo $line | cut -d' ' -f5)
   nodeName=$(xprop -id $nodeID WM_NAME)
 
   #evenly tile matlab/simulink plots on desktop 10 (=9)

@@ -214,10 +214,10 @@ bindsym XF86TouchpadToggle exec bash ~/dotfiles/toggletouchpad.sh
 # Set screenshot shortcut and save in ~/Pictures/screenshots/ with date
 #
 # PrtSc => screenshot
-bindcode 107 exec --no-startup-id scrot $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindcode 107 exec --no-startup-id scrot $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H.%M.%S`.png
 #
 # mod+PrtSc => screenshot of selected window
-bindcode $mod+107 exec --no-startup-id scrot -u $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindcode $mod+107 exec --no-startup-id scrot -u $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H.%M.%S`.png
 
 # Keybind for lock screen mod+alt(64)+L(?)
 bindsym $mod+Mod1+l exec --no-startup-id i3lock -g
