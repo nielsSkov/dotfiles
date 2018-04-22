@@ -1,6 +1,8 @@
 #! /bin/sh
 
 text=""
+scrShot=0
+printHelp=0
 
 options="Options:
     -h, --help       Shows this help menu.
@@ -8,10 +10,7 @@ options="Options:
     -t, --text       Adds text string to the screen lock
     
     -s, --scrShot    Decide to use screenshot (1) or wallpaper (0)
-                     as lock sccreen background (default: 1)"
-
-
-printHelp=0
+                     as lock sccreen background (default: 0)"
 
 while true ; do
     case "$1" in
@@ -19,7 +18,7 @@ while true ; do
         -t|--text)
           case "$2" in
             ""|-s|--scrShot) printf "\nOption missing for $1\n" ; printHelp=1  ; shift ;;
-            *)               text="$2" ; shift 2 ;;
+                          *) text="$2" ; shift 2 ;;
           esac ;;
         -s|--scrShot)
           case "$2" in
