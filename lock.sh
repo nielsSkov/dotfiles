@@ -39,8 +39,15 @@ textSize=22
 textColor=gray50
 colorTheme=cda882
 
+VGA=$(cat /sys/class/drm/card0-VGA-1/status) 
+HDMI=$(cat /sys/class/drm/card0-HDMI-A-1/status)
+
 #res=$(xdpyinfo | grep -oP 'dimensions:\s+\K\S+')
-res="1600x1000"
+if [ $HDMI == "disconnected" ] && [ $VGA == "disconnected" ]; then
+  res="1600x1000"
+else
+  res="2624x1640"
+fi
 
 bckgImg="$HOME/.lockShot/lock.png"
 
