@@ -1,0 +1,124 @@
+#! /bin/sh
+#
+# Example panel for lemonbar
+
+. panel_colors
+
+num_mon=$(bspc query -M | wc -l)
+
+while read -r line ; do
+	case $line in
+		S*)
+			# clock output
+			sys="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
+			;;
+		T*)
+			# xtitle output
+			title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
+			;;
+		W*)
+			# bspwm's state
+			wm=
+			IFS=':'
+			set -- ${line#?}
+			while [ $# -gt 0 ] ; do
+				item=$1
+				name=${item#?}
+          #  if [[ "$item" == "f9" ]] ; then
+          #    item="f8"
+          #  elif [[ "$item" == "f8" ]] ; then
+          #    item="f10"
+          #  elif [[ "$item" == "f10" ]] ; then
+          #    item="f9"
+          #  elif [[ "$item" == "F9" ]] ; then
+          #    item="F8"
+          #  elif [[ "$item" == "F8" ]] ; then
+          #    item="F10"
+          #  elif [[ "$item" == "F10" ]] ; then
+          #    item="F9"
+          #  fi
+				case $item in
+					[fFoOuU]*)
+						case $item in
+							f*)
+								# free desktop
+								FG=$COLOR_FREE_FG
+								BG=$COLOR_FREE_BG
+								UL=$BG
+								;;
+							F*)
+								if [ "$on_focused_monitor" ] ; then
+									# focused free desktop
+									FG=$COLOR_FOCUSED_FREE_FG
+									BG=$COLOR_FOCUSED_FREE_BG
+									UL=$BG
+								else
+									# active free desktop
+									FG=$COLOR_FREE_FG
+									BG=$COLOR_FREE_BG
+									UL=$COLOR_FOCUSED_FREE_BG
+								fi
+								;;
+							o*)
+								# occupied desktop
+								FG=$COLOR_OCCUPIED_FG
+								BG=$COLOR_OCCUPIED_BG
+								UL=$BG
+								;;
+							O*)
+								if [ "$on_focused_monitor" ] ; then
+									# focused occupied desktop
+									FG=$COLOR_FOCUSED_OCCUPIED_FG
+									BG=$COLOR_FOCUSED_OCCUPIED_BG
+									UL=$BG
+								else
+									# active occupied desktop
+									FG=$COLOR_OCCUPIED_FG
+									BG=$COLOR_OCCUPIED_BG
+									UL=$COLOR_FOCUSED_OCCUPIED_BG
+								fi
+								;;
+							u*)
+								# urgent desktop
+								FG=$COLOR_URGENT_FG
+								BG=$COLOR_URGENT_BG
+								UL=$BG
+								;;
+							U*)
+								if [ "$on_focused_monitor" ] ; then
+									# focused urgent desktop
+									FG=$COLOR_FOCUSED_URGENT_FG
+									BG=$COLOR_FOCUSED_URGENT_BG
+									UL=$BG
+								else
+									# active urgent desktop
+									FG=$COLOR_URGENT_FG
+									BG=$COLOR_URGENT_BG
+									UL=$COLOR_FOCUSED_URGENT_BG
+								fi
+								;;
+						esac
+            #create illution that bspwm supports free placement of desktops
+            #(works only for this setup)
+            if [[ "$name" == "9" ]] ; then
+              name="8"
+              wm="${wm}%{F${FG}}%{B${BG}}%{U${UL}}%{+u}%{A:bspc desktop -f ${name}:} ${name} %{A}%{B-}%{F-}%{-u}"
+            elif [[ "$name" == "8" ]] ; then
+              wm="${wm}"
+              name="10"
+              wm10="%{F${FG}}%{B${BG}}%{U${UL}}%{+u}%{A:bspc desktop -f ${name}:} ${name} %{A}%{B-}%{F-}%{-u}"
+            elif [[ "$name" == "10" ]] ; then
+              name="9"
+              wm="${wm}%{F${FG}}%{B${BG}}%{U${UL}}%{+u}%{A:bspc desktop -f ${name}:} ${name} %{A}%{B-}%{F-}%{-u}"
+              wm="${wm}${wm10}"
+            else
+              wm="${wm}%{F${FG}}%{B${BG}}%{U${UL}}%{+u}%{A:bspc desktop -f ${name}:} ${name} %{A}%{B-}%{F-}%{-u}"
+            fi
+						;;
+				esac
+				shift
+			done
+			;;
+	esac
+	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${sys}"
+done

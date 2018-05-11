@@ -8,6 +8,10 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 #set background and terminal color scheme
 export wallpaper="$HOME/pictures/wallpapers/mistyForrest.jpg"
 
+#include path to panel in path and set up fifo
+export PATH=$PATH:$HOME/syncDrive/dotfiles/panel
+export PANEL_FIFO="/tmp/panel-fifo"
+
 # merge in defaults and keymaps
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
@@ -41,10 +45,13 @@ HDMI=$(cat /sys/class/drm/card0-HDMI-A-1/status)
 #otherwise, load auto display settings
 if [ $VGA == "connected" ]; then
   xrandr --output eDP-1 --primary --auto --output VGA-1 --left-of eDP-1 --auto --rotate left &
+  export LEMON_POSX=1038
 elif [ $HDMI == "connected" ]; then
   xrandr --output eDP-1 --primary --auto --output HDMI-1 --left-of eDP-1 --auto --rotate left &
+  export LEMON_POSX=1038
 else
   xrandr --output eDP-1 --primary --auto --output HDMI-1 --off --output VGA-1 --off
+  export LEMON_POSX=3
 fi
 
 wal -i "$wallpaper"
