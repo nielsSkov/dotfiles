@@ -5,6 +5,8 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+#[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
 #set background and terminal color scheme
 export wallpaper="$HOME/pictures/wallpapers/mistyForrest.jpg"
 
@@ -51,11 +53,13 @@ elif [ $HDMI == "connected" ]; then
   export LEMON_POSX=1038
 else
   xrandr --output eDP-1 --primary --auto --output HDMI-1 --off --output VGA-1 --off
-  export LEMON_POSX=3
+  export LEMON_POSX=15
 fi
 
-wal -i "$wallpaper"
-(wal -rt)
+source ~/.cache/wal/colors-tty.sh
+wal -i "$wallpaper" -q
+#wpg -s $wallpaper 
+(cat $HOME/.config/wpg/sequences &)
 
 #lock screen on startup
 $HOME/dotfiles/lock.sh --text "welcome"

@@ -11,7 +11,10 @@ wmname LG3D 2>/dev/null
 #fix OpenGL issue
 export LIBGL_DRI3_DISABLE=1 2>/dev/null
 
-(wal -rt &)
+#set color scheme
+#cat ~/.cache/wal/sequences
+(cat $HOME/.config/wpg/sequences &)
+
 export LC_ALL=en_US.UTF-8
 
 # If not running interactively, don't do anything

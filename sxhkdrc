@@ -6,7 +6,7 @@
 
 # terminal emulator
 super + Return
-	lilyterm
+	termite
 
 # program launcher
 super + space
