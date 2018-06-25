@@ -76,7 +76,7 @@ param=( "-k" \
         "--timecolor=111111ff" \
         "--ignore-empty-password" \
         "--indicator" \
-        "--textcolor=ffffff00" \
+        "--layoutcolor=ffffff00" \
         "--insidecolor=${colorTheme}ac" \
         "--ringcolor=${colorTheme}ae" \
         "--linecolor=ffffff00" \
