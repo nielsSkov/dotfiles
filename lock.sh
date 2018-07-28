@@ -54,7 +54,7 @@ bckgImg="$HOME/.lockShot/lock.png"
 if [[ $scrShot -eq 1 ]]; then
   scrot 'lock.png' -q 100 -e 'mv $f ~/.lockShot/'
 else
-  convert $wallpaper -resize $res $bckgImg
+  convert $wallpaper2 -resize $res $bckgImg
 fi
 
 convert $bckgImg \
