@@ -67,7 +67,7 @@ wal -i "$colorWal" -n -q
 (cat $HOME/.config/wpg/sequences &)
 
 #lock screen on startup
-#$HOME/dotfiles/lock.sh --text "welcome"
+$HOME/dotfiles/lock.sh --text "welcome"
 
 #disable screen timeout
 xset s off -dpms &
