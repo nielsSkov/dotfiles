@@ -13,7 +13,8 @@ export wallpaper2="$HOME/pictures/wallpapers/library2.jpg"
 export colorWal="$HOME/pictures/wallpapers/mistyForrest.jpg"
 
 #include path to panel in path and set up fifo
-export PATH=$PATH:$HOME/syncDrive/dotfiles/panel
+#export PATH=$PATH:$HOME/syncDrive/dotfiles/panel
+export PATH=$PATH:$HOME/dotfiles/panel
 export PANEL_FIFO="/tmp/panel-fifo"
 
 # merge in defaults and keymaps
@@ -44,19 +45,20 @@ fi
 #creating display status variables
 VGA=$(cat /sys/class/drm/card0-VGA-1/status)
 HDMI=$(cat /sys/class/drm/card0-HDMI-A-1/status)
+xrandr --output $primaryScr --primary --auto --output HDMI-1 --off --output VGA-1 --off
 
 #set up display if VGA-1 or HDMI-1 screen is connected,
 #otherwise, load auto display settings
 if [ $VGA == "connected" ]; then
-  xrandr --output eDP-1 --primary --auto --output VGA-1 --left-of eDP-1 --auto --rotate left &
+  xrandr --output $primaryScr --primary --auto --output VGA-1 --left-of $primaryScr --auto --rotate left &
   feh --bg-fill $wallpaper1 $wallpaper2
   export LEMON_POSX=1038
 elif [ $HDMI == "connected" ]; then
-  xrandr --output eDP-1 --primary --auto --output HDMI-1 --left-of eDP-1 --auto --rotate left &
+  xrandr --output $primaryScr --primary --auto --output HDMI-1 --left-of $primaryScr --auto --rotate left &
   feh --bg-fill $wallpaper1 $wallpaper2
   export LEMON_POSX=1038
 else
-  xrandr --output eDP-1 --primary --auto --output HDMI-1 --off --output VGA-1 --off
+  xrandr --output $primaryScr --primary --auto --output HDMI-1 --off --output VGA-1 --off
   feh --bg-fill $wallpaper1
   export LEMON_POSX=15
 fi
