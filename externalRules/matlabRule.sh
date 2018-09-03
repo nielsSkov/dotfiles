@@ -1,5 +1,8 @@
 #! /bin/sh
 
+#dependency: wmutils,
+#pacaur -S wmutils-git
+
 #listen for new and terminated nodes (windows)
 bspc subscribe node_add | while read line; do
 

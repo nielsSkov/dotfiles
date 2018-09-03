@@ -1,5 +1,8 @@
 #! /bin/sh
 
+#dependency: wmutils,
+#pacaur -S wmutils-git
+
 fwid=$(bspc query -N -n focused.automatic)
 
 if [ -n "$fwid" ] ; then
