@@ -17,6 +17,9 @@ export colorWal="$HOME/pictures/wallpapers/mistyForrest.jpg"
 export PATH=$PATH:$HOME/dotfiles/panel
 export PANEL_FIFO="/tmp/panel-fifo"
 
+#fix matlab
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # merge in defaults and keymaps
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources

@@ -1,0 +1,5 @@
+#generate better morrorlist
+
+sudo pacman -S reflector
+
+sudo reflector --verbose --country 'Denmark' --country 'Germany' --sort rate --save /etc/pacman.d/mirrorlist

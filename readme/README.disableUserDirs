@@ -2,7 +2,7 @@
 sudo pacman -S xdg-user-dirs
 vim ~/.config/user-dirs.dirs
   #only content should be
-  XDG_DESKTOP_DIR="$HOME/"
+  XDG_DESKTOP_DIR="$HOME"
 
 sudo vim /etc/xdg/user-dirs.conf
   #change

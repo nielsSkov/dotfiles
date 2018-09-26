@@ -1,0 +1,16 @@
+#NOTE: synaptics is deprecated, look into new driver, see arch wiki
+
+#install evtest
+sudo pacman -S evtest
+
+#edit 10-synaptics.conf to fit touchpad using evtest
+sudo evtest |grep ABS_X
+sudo evtest |grep ABS_Y
+
+# coppy 10-synaptics.conf into appropriate directory
+sudo cp dotfiles/10-synaptics2.conf /etc/X11/xorg.conf.d/10-synaptics.conf
+
+#install driver
+sudo pacman -S xf86-input-synaptics
+
+#reboot
