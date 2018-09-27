@@ -16,4 +16,9 @@ cd bin/glnxa64
 #This can also be achieved using the arch aur 'downgrade' package
 
 #At moment of writing I have downgraded the following packages,
-IgnorePkg = pango atk at-spi2-atk gtk3
+PACKAGE     LATEST WORKING VERSION
+pango       ( 1.40.6+6+g6f59d0f3-2 )
+atk         ( 2.24.0-2  )
+at-spi2-atk ( 2.26.2-1  )
+gtk3        ( 3.22.30-1 )
+
