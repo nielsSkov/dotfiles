@@ -15,6 +15,5 @@ cd bin/glnxa64
 #and added to the ignore list in /etc/pacman.conf
 #This can also be achieved using the arch aur 'downgrade' package
 
-#At moment of writing I have downgraded following libraries,
-#  pango
-#  atk
+#At moment of writing I have downgraded the following packages,
+IgnorePkg = pango atk at-spi2-atk gtk3
