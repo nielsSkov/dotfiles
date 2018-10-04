@@ -22,7 +22,7 @@ LEMON_HIGHT=19
 LEMON_POSY=0
 
 #find XLFD fonts using xfontsel
-PANEL_FONT='-*-inconsolata-*-*-*-*-*-100-*-*-*-*-*-*'
+PANEL_FONT='-*-inconsolata-small-*-*-*-*-*-120-*-*-*-*-*-*'
 
 panel_bar < "$PANEL_FIFO" | lemonbar -a 32 -u 2 -n "$PANEL_WM_NAME" -g "$LEMON_WIDTH"x"$LEMON_HIGHT"+"$LEMON_POSX"+"$LEMON_POSY" -f "$PANEL_FONT" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
 
