@@ -57,6 +57,19 @@ else
   convert $wallpaper2 -resize $res $bckgImg
 fi
 
+primaryScr=$((xrandr --listactivemonitors |grep + | awk '{ print$2 }') | sed 's/[^a-zA-Z0-9\-]//g' | head -n 1)
+
+#placement of text depending on display setup
+if [ $primaryScr == "eDP-1" ]; then
+  txtGeometry="+595+600"
+elif [ $primaryScr == "LVDS1" ]; then
+  if [ $VGA == "connected" ]; then
+    txtGeometry="+1622+585"
+  else
+    txtGeometry="+595+585"
+  fi
+fi
+
 convert $bckgImg \
         -sepia-tone 54000 \
         -blur 3x3 \
@@ -69,7 +82,7 @@ convert -size 400x$textSize xc:none -gravity center \
         -background none -shadow 85x3+0+0 +repage \
         -font Inconsolata-Regular -pointsize $textSize \
         -stroke none -fill $textColor -annotate +0+0 "$text" \
-        $bckgImg +swap -gravity northeast -geometry +595+600 \
+        $bckgImg +swap -gravity northeast -geometry $txtGeometry \
         -composite $bckgImg
 
 param=( "-k" \

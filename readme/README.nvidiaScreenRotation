@@ -1,0 +1,33 @@
+# To enable screen rotation for the nvidia graphics card,
+# the xorg.conf must be created,
+
+  X -configure
+
+# It might be nessesary to run this command as su (super user)
+# and without X running.
+# The new config file is found as,
+
+  ~/ xorg.conf.new
+
+# and must be coppied to,
+
+  /etc/X11/xorg.conf
+
+# In the file, find the section containing,
+
+  Driver	"nvidia"
+
+# and add the line,
+
+  Option  "RandRRotation" "on"
+
+# it could look like,
+
+  Section "Device"
+    Identifier  "Card1"
+    Driver      "nvidia"
+    BusID       "PCI:1:0:0"
+    Option      "RandRRotation" "on"
+  EndSection
+
+# Restart X and screen rotation should work.

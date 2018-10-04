@@ -8,11 +8,19 @@ VGA=$(cat /sys/class/drm/card0-VGA-1/status)
 HDMI=$(cat /sys/class/drm/card0-HDMI-A-1/status)
 primaryScr=$((xrandr --listactivemonitors |grep + | awk '{ print$2 }') | sed 's/[^a-zA-Z0-9\-]//g' | head -n 1)
 
+#setting name of VGA based on which computer is in use
+#(known from name of primary screen)
+if [ $primaryScr == "eDP-1" ]; then
+  vgaScr="VGA-1"
+elif [ $primaryScr == "LVDS1" ]; then
+  vgaScr="VGA1"
+fi
+
 #assign desktops to primaty and VGA display
 if [ $VGA == "connected" ]; then
-  bspc monitor VGA-1 -s $primaryScr
+  bspc monitor $vgaScr -s $primaryScr
   bspc monitor $primaryScr -d 1 2 3 4 5 6 7 8
-  bspc monitor VGA-1 -d 9 10
+  bspc monitor $vgaScr -d 9 10
 fi
 
 #assign desktops to primary and HDMI display
