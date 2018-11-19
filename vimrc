@@ -10,6 +10,9 @@ call plug#end()
 
 " colorscheme wal
 
+set number
+set relativenumber
+
 " --------------- FROM ARCH DEFAULT VIMRC -------------------------------------------
 
 " Normally we use vim-extensions. If you want true vi-compatibility

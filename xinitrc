@@ -62,6 +62,7 @@ elif [ $primaryScr == "LVDS1" ]; then
   scrPlacement="--right-of"
   scrRotation="left"
   vgaScr="VGA1"
+  numlockx &   #enable numlock only on one computer
 fi
 
 #set up display if VGA-1/VGA1 or HDMI-1 screen is connected,

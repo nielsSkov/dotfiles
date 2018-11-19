@@ -22,3 +22,13 @@ atk         ( 2.24.0-2  )
 at-spi2-atk ( 2.26.2-1  )
 gtk3        ( 3.22.30-1 )
 
+
+
+#If errors occour when using pdfcrop from matlab, go to,
+/usr/local/MATLAB/R2017b/sys/os/glnxa64/
+
+#and
+sudo mv libstdc++.so.6 ./libstdc++.so.6.OLD
+
+#the library could be different,
+#just start with the first in the error message
