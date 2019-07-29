@@ -16,9 +16,9 @@
 - Under "system variables" select "CDS_LIC_FILE"
 - If the value of "CDS_LIC_FILE" is "5280@dkcph1-ccsserv" you are all set, if not, click "edit" to change the "variable value".
 
-**Using the License**
+**Using the License**\
 There is currently only one available license. If the license was recently used on a different PC the server license manager can sometimes take a while to release it for an other user. If this happens,
-- Open "CheckOrcadLicenseManager" (located in "\\winserv\OrCAD")
+- Open "CheckOrcadLicenseManager" (located in "\\\winserv\OrCAD\\")
 - Log in using your DHI credentials
 - Click "restart orcad license manager"
 
