@@ -1,7 +1,8 @@
 " directory /home/$USER/.vimrc
 
 " tab=spaces; tab=2spaces; indentation(e.g.>>)=2spaces
-set expandtab tabstop=2 shiftwidth=2
+" set expandtab tabstop=2 shiftwidth=2
+set tabstop=2 shiftwidth=2
 
 " plugins
 call plug#begin('~/.vim/plugIn')
@@ -9,6 +10,16 @@ Plug '$HOME/build/wal.vim'
 call plug#end()
 
 " colorscheme wal
+
+hi ColorColumn ctermbg=black guibg=NONE
+" execute "set colorcolumn=" . join(range(81,335), ',')
+execute "set colorcolumn=" . 81
+
+set number
+set relativenumber
+
+" avoid underline on current line-number
+hi CursorLineNr cterm=bold ctermfg=012
 
 " --------------- FROM ARCH DEFAULT VIMRC -------------------------------------------
 
@@ -31,4 +42,7 @@ if has('gui_running')
   map! <S-Insert> <MiddleMouse>
 endif
 
-" -----------------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
+
+" tab settings for python files
+autocmd FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab

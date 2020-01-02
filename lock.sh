@@ -4,7 +4,7 @@ text=""
 scrShot=0
 printHelp=0
 
-options="Options:
+helpMenu="Options:
     -h, --help       Shows this help menu.
     
     -t, --text       Adds text string to the screen lock
@@ -44,7 +44,7 @@ HDMI=$(cat /sys/class/drm/card0-HDMI-A-1/status)
 
 #res=$(xdpyinfo | grep -oP 'dimensions:\s+\K\S+')
 if [ $HDMI == "disconnected" ] && [ $VGA == "disconnected" ]; then
-  res="1600x1000"
+  res="1600x1080"
 else
   res="2624x1640"
 fi
@@ -70,10 +70,10 @@ elif [ $primaryScr == "LVDS1" ]; then
   fi
 fi
 
+#        -sepia-tone 54000 \
+#        -swirl 180 \
 convert $bckgImg \
-        -sepia-tone 54000 \
-        -blur 3x3 \
-        -swirl 180 \
+        -blur 30x30 \
         $bckgImg
 
 convert -size 400x$textSize xc:none -gravity center \

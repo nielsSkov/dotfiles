@@ -8,8 +8,8 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 #[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 #set background and terminal color scheme
-export wallpaper1="$HOME/pictures/wallpapers/library1.jpg"
-export wallpaper2="$HOME/pictures/wallpapers/library2.jpg"
+export wallpaper1="$HOME/pictures/wallpapers/norwaySnow.jpg"
+export wallpaper2="$HOME/pictures/wallpapers/norwaySnow.jpg"
 export colorWal="$HOME/pictures/wallpapers/mistyForrest.jpg"
 
 #include path to panel in path and set up fifo
@@ -90,7 +90,7 @@ fi
 
 source ~/.cache/wal/colors-tty.sh
 wal -i "$colorWal" -n -q
-#wpg -s $wallpaper2 
+#wpg -s $colorWal
 (cat $HOME/.config/wpg/sequences &)
 
 #lock screen on startup
