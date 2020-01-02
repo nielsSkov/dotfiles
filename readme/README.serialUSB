@@ -1,0 +1,18 @@
+sudo pacman -S uucp
+sudo pacman -S rxtx
+
+sudo gpasswd --add niels lock
+sudo gpasswd --add niels uucp
+
+#this will work, but as /run/lock is created at each boot
+#it will bot persist
+sudo chmod 775 /run/lock
+sudo chown :lock /run/lock
+
+#to make the setting persistant
+sudo cp /usr/lib/tmpfiles.d/legacy.conf /etc/tmpfiles.d/
+
+#and eddit the permisions in /etc/tmpfiles.d/legacy.conf
+(see legacy.conf example in dotfiles/)
+
+sudo reboot

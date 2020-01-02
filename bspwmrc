@@ -18,7 +18,10 @@ fi
 
 #assign desktops to primaty and VGA display
 if [ $VGA == "connected" ]; then
-  bspc monitor $vgaScr -s $primaryScr
+  #only switch screens on one of the laptops using this config
+  if [ $vgaScr == "VGA-1" ]; then
+    bspc monitor $vgaScr -s $primaryScr
+  fi
   bspc monitor $primaryScr -d 1 2 3 4 5 6 7 8
   bspc monitor $vgaScr -d 9 10
 fi

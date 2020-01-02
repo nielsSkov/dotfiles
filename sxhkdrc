@@ -21,6 +21,17 @@ super + Escape
 mode_switch + l
 	$HOME/dotfiles/lock.sh --text "you know what to do"
 
+# toggle between play/pause
+XF86AudioPlay
+  playerctl play-pause
+# skip to the next track
+XF86AudioNext
+  playerctl next
+# skip to the previous track
+XF86AudioPrev
+  playerctl previous
+
+
 #
 # bspwm hotkeys
 #
