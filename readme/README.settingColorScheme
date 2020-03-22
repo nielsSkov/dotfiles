@@ -1,0 +1,31 @@
+#to use wpg color scheme selection interface
+
+#install tool (wpg)
+pacaur -S wpgtk-git
+
+#open wpg GUI
+#select an image to use for generating color scheme
+#click "Set", this will set the background, but not permanently
+#switch to the "Colors"-tab
+#modify/select the colors you want (color 0 is the background color)
+#click "Save" in the "Colors"-tab
+#you can close the GUI
+
+#now wpg will have linked your new color scheme with the selected wallpaper
+#in this process it has generated a .json-file in ~/.config/wpg/schemes/
+#make sure there is only one .json-file for a specific wallpaper
+
+#you want to generate a "sequences"-file located in
+#   ~/config/wpg/sequences
+#to do so, run
+wpg -m
+#this wil set the colors imediately - to make it persistant, include
+(cat $HOME/.config/wpg/sequences &)
+#both in xinit and bashrc
+
+#transperancy is not altered by wpg and must be set in the terminal config
+#for termite see dotfiles/termiteConfig
+background = rgba(0, 0, 0, .9)
+#                           ^
+#                           |
+#this is the alpha---------/   the other values have no effect when using wpg

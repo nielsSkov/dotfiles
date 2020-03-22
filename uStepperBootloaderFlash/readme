@@ -1,0 +1,12 @@
+
+Put the following files in a folder:
+optiboot_atmega328pb.hex
+avrdude.conf
+
+
+In a therminal, navigate to the folder and execute
+>>>> remember to change the programmer name (-c flag) <<<<
+
+avrdude -C ./avrdude.conf -p m328pb -c avrispmkII -B 4.25 -e -U lfuse:w:0xbf:m -U hfuse:w:0xde:m -U efuse:w:0xf4:m
+
+avrdude -C ./avrdude.conf -p m328pb -c avrispmkII -B 4.25 -e -U flash:w:./optiboot_atmega328pb.hex

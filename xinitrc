@@ -91,7 +91,7 @@ fi
 
 source ~/.cache/wal/colors-tty.sh
 wal -i "$colorWal" -n -q
-#wpg -s $colorWal
+#wpg -s $wallpaper2 
 (cat $HOME/.config/wpg/sequences &)
 
 #lock screen on startup

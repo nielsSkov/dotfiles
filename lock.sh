@@ -4,7 +4,7 @@ text=""
 scrShot=0
 printHelp=0
 
-helpMenu="Options:
+options="Options:
     -h, --help       Shows this help menu.
     
     -t, --text       Adds text string to the screen lock
@@ -70,8 +70,8 @@ elif [ $primaryScr == "LVDS1" ]; then
   fi
 fi
 
-#        -sepia-tone 54000 \
-#        -swirl 180 \
+#-sepia-tone 54000 \
+#-swirl 180 \
 convert $bckgImg \
         -blur 30x30 \
         $bckgImg
