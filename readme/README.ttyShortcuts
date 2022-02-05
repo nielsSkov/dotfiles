@@ -1,0 +1,107 @@
+Mod == Alt
+
+.--------------.-------------------.----------------------------------------.
+|              |                   |                                        |
+| Shortcut     | Function          | Description                            |
+|              |                   |                                        |
+'--------------'-------------------'----------------------------------------'
+| Commands for Moving:                                                      |
+'--------------.-------------------.----------------------------------------'
+| Ctrl-a       | beginning-of-line | Move to the beginning of line.         |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-e       | end-of-line       | Move to the end of line.               |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-f       | forward-char      | Move forward a character.              |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-b       | backward-char     | Move back a character.                 |
+'--------------+-------------------+----------------------------------------'
+| Mod-f        | forward-word      | Move forward a word.                   |
+'--------------+-------------------+----------------------------------------'
+| Mod-b        | backward-word     | Move backward a word.                  |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-l       | clear-screen      | Clear the screen leaving the current   |
+|              |                   | line at the top of the screen.         |
+'--------------+-------------------+----------------------------------------'
+| Commands for Changing Text:                                               |
+'--------------.-------------------.----------------------------------------'
+| Ctrl-d       | delete-char       | Delete one character at point.         |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-t       | transpose-chars   | Exchange the char before cursor with   |
+|              |                   | the character at cursor.               |
+'--------------+-------------------+----------------------------------------'
+| Mod-t        | transpose-words   | Exchange the word before cursor with   |
+|              |                   | the word at cursor.                    |
+'--------------+-------------------+----------------------------------------'
+| Mod-u        | upcase-word       | Uppercase from cursor to end of word.  |
+'--------------+-------------------+----------------------------------------'
+| Mod-l        | downcase-word     | Lowercase from cursor to end of word.  |
+'--------------+-------------------+----------------------------------------'
+| Mod-c        | capitalize-word   | Capitalize at cursor.                  |
+'--------------+-------------------+----------------------------------------'
+| Killing and Yanking:                                                      |
+'--------------.-------------------.----------------------------------------'
+| Ctrl-k       | kill-line         | Kill the text from point to the end of |
+|              |                   | the line.                              |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-u       | unix-line-discard | Kill backward from point to the        |
+|              |                   | beginning of the line.                 |
+'--------------+-------------------+----------------------------------------'
+| Mod-d        | kill-word         | Kill from point to the end of the      |
+|              |                   | current word.                          |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-w       | unix-word-rubout  | Kill the word behind point, using      |
+|              |                   | white space as a word boundary.        |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-y       | yank              | Yank the top of the kill ring into the |
+|              |                   | buffer at point.                       |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-y  then | yank-pop          | First yank with Ctrl-y, then rotate    |
+| Mod-y        |                   | through the kill ring with Mod-y       |
+'--------------+-------------------+----------------------------------------'
+| Commands for Manipulating the History:                                    |
+'--------------.-------------------.----------------------------------------'
+| Ctrl-p       | previous-history  | Fetch the previous command from the    |
+|              |                   | history list.                          |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-n       | next-history      | Fetch the next command from the        |
+|              |                   | history list.                          |
+'--------------+-------------------+----------------------------------------'
+| Mod-<        | beginning-of-     | Move to the first line in the history. |
+|              | history           |                                        |
+'--------------+-------------------+----------------------------------------'
+| Mod->        | end-of-history    | Move to the end of the input history   |
+'--------------+-------------------+----------------------------------------'
+| Ctrl-r       | reverse-search-   | Search backward starting at the        |
+|              | history           | current line (incremental).            |
+'--------------+-------------------+----------------------------------------'
+| Mod-p        | non-incremental-  | Search backward using non-incremental  |
+|              | reverse-search-   | search.                                |
+|              | history           |                                        |
+'--------------+-------------------+----------------------------------------'
+| Mod-n        | non-incremental-  | Search forward using non-incremental   |
+|              | forward-search-   | search.                                |
+|              | history           |                                        |
+'--------------+-------------------+----------------------------------------'
+| Mod-.        | yank-last-arg     | Yank and loop through kill ring.       |
+|              |                   |                                        |
+'--------------+-------------------+----------------------------------------'
+| Completing:                                                               |
+'--------------.-------------------.----------------------------------------'
+| TAB          | complete          | Attempt to perform completion on the   |
+|              |                   | text before point.                     |
+'--------------'-------------------'----------------------------------------'
+| Miscellaneous:                                                            |
+'--------------.-------------------.----------------------------------------'
+| Mod-0, Mod-1,| digit-argument    | Specify the digit to the argument.     |
+| ..., Mod--   |                   | Mod-- starts a negative argument.      |
+'--------------'-------------------'----------------------------------------'
+
+
+ ===========================================================================
+
+.---------------------------------------------------------------------------.
+| Created by Peter Krumins (peter@catonmat.net, @pkrumins on twitter)       |
+| www.catonmat.net -- good coders code, great coders reuse                  |
+'---------------------------------------------------------------------------'
+| Modified for tty by Niels                                                 |
+'---------------------------------------------------------------------------'
