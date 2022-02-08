@@ -1,0 +1,37 @@
+
+# HIBERNATION SETUP
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# >> disclaimer: this is all written after configuring system for hibernation,  <<
+# >> make sure to consult arch wiki @ archlinux.org                             <<
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+ 
+# ENABLE HIBERNATION
+#
+# Edit Grub settings in /etc/default/grub to add kernel parameter:
+# GRUB_CMDLINE_LINUX_DEFAULT="resume=UUID=76a543bc-def2-1098-g7h6-54321fijk098 loglevel=3 quiet"
+# 
+# above UUID is just a dummy number, find the right UUID for the swap partition using:
+# sudo blkid
+# 
+# Update Grub config:
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
+# 
+# 
+# Include resume as hook in initramfs:
+# edit /etc/mkinitcpio.cfg
+# insert resume here:
+# HOOKS=(base udev autodetect keyboard modconf block filesystems resume fsck)
+# 
+# regenerate initramfs:
+# sudo mkinitcpio -P
+
+
+# SAFE HIBERNATION
+# 
+# To safely hibernate on a dual boot system with a shared drive, see
+#
+# dotfiles/hibernateSwitch.sh
+#
+# explanation and instructions are in the file
