@@ -10,16 +10,18 @@
 # this ensures that no other OS is booted when this one is hibernated,
 # while also alowing to choose OS in grub at normal boot
 
+grubOffTimeout=0
+grubOnTimeout=5
 
 if [ "$2" = hibernate ]; then
 
 	case "$1" in
 		pre)
-			cat /boot/grub/grub.cfg | sed 's/timeout=5/timeout=0/g' > /boot/grub/grub.cfg~
+			cat /boot/grub/grub.cfg | sed 's/timeout='$grubOnTimeout'/timeout='$grubOffTimeout'/g' > /boot/grub/grub.cfg~
 			mv /boot/grub/grub.cfg~ /boot/grub/grub.cfg
 		;;
 		post)
-			cat /boot/grub/grub.cfg | sed 's/timeout=0/timeout=5/g' > /boot/grub/grub.cfg~
+			cat /boot/grub/grub.cfg | sed 's/timeout='$grubOffTimeout'/timeout='$grubOnTimeout'/g' > /boot/grub/grub.cfg~
 			mv /boot/grub/grub.cfg~ /boot/grub/grub.cfg
 		;;
 	esac
