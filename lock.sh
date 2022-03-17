@@ -35,46 +35,33 @@ if [[ printHelp -eq 1 ]] ; then
   exit 1
 fi
 
-textSize=22
-textColor=gray50
-colorTheme=cda882
+textSize=35
+textColor=gray70
+colorTheme=2a3558
+#cda882
 
-VGA=$(cat /sys/class/drm/card0-VGA-1/status) 
-HDMI=$(cat /sys/class/drm/card0-HDMI-A-1/status)
+res=$(xdpyinfo | grep -oP 'dimensions:\s+\K\S+')
 
-#res=$(xdpyinfo | grep -oP 'dimensions:\s+\K\S+')
-if [ $HDMI == "disconnected" ] && [ $VGA == "disconnected" ]; then
-  res="1600x1080"
-else
-  res="2624x1640"
-fi
-
-bckgImg="$HOME/.lockShot/lock.png"
+lockShot="$HOME/.lockShot/lockShot.png"
+lockBckg="$HOME/.lockShot/lockBckg.png"
+lockBckgFinal="$HOME/.lockShot/lockBckgFinal.png"
 
 if [[ $scrShot -eq 1 ]]; then
-  scrot 'lock.png' -q 100 -e 'mv $f ~/.lockShot/'
+  scrot 'lockShot.png' -q 100 -e 'mv $f ~/.lockShot/'
+  convert $lockShot -blur 30x30 $lockShot
+  bckgImg=$lockShot
 else
-  convert $wallpaper2 -resize $res $bckgImg
-fi
-
-primaryScr=$((xrandr --listactivemonitors |grep + | awk '{ print$2 }') | sed 's/[^a-zA-Z0-9\-]//g' | head -n 1)
-
-#placement of text depending on display setup
-if [ $primaryScr == "eDP-1" ]; then
-  txtGeometry="+595+600"
-elif [ $primaryScr == "LVDS1" ]; then
-  if [ $VGA == "connected" ]; then
-    txtGeometry="+1622+585"
-  else
-    txtGeometry="+595+585"
+  if [ ! -f "$lockBckg" ]; then
+    convert $wallpaper -resize 2880 -background Black \
+	    -gravity center -extent $res -blur 30x30 \
+	    $lockBckg
+    echo "im here"
   fi
+  bckgImg=$lockBckg
+  echo "also here"
 fi
 
-#        -sepia-tone 54000 \
-#        -swirl 180 \
-convert $bckgImg \
-        -blur 30x30 \
-        $bckgImg
+txtGeometry="+0+250"
 
 convert -size 400x$textSize xc:none -gravity center \
         -font Inconsolata-Regular -pointsize $textSize \
@@ -82,23 +69,33 @@ convert -size 400x$textSize xc:none -gravity center \
         -background none -shadow 85x3+0+0 +repage \
         -font Inconsolata-Regular -pointsize $textSize \
         -stroke none -fill $textColor -annotate +0+0 "$text" \
-        $bckgImg +swap -gravity northeast -geometry $txtGeometry \
-        -composite $bckgImg
+        $bckgImg +swap -geometry $txtGeometry \
+        -composite $lockBckgFinal
 
-param=( "-k" \
-        "--timecolor=111111ff" \
+param=( "--clock" \
+        "--radius=180" \
+        "--ring-width=17.0" \
+        "--time-size=60" \
+        "--date-size=30" \
+        "--date-str=%a %Y-%m-%d" \
+        "--date-pos=w*.5:h*.5+60" \
+        "--time-font=Inconsolata-Bold" \
+        "--date-font=Inconsolata-Bold" \
+        "--color=000000ff" \
+        "--time-color=ffffff99" \
+        "--date-color=ffffff99" \
         "--ignore-empty-password" \
         "--indicator" \
-        "--layoutcolor=ffffff00" \
-        "--insidecolor=${colorTheme}ac" \
-        "--ringcolor=${colorTheme}ae" \
-        "--linecolor=ffffff00" \
-        "--keyhlcolor=00000080" \
-        "--ringvercolor=00000000" \
-        "--separatorcolor=22222260" \
-        "--insidevercolor=${colorTheme}ac" \
-        "--ringwrongcolor=00000055" \
-        "--insidewrongcolor=000000ac" )
+        "--layout-color=ffffff00" \
+        "--inside-color=${colorTheme}ac" \
+        "--ring-color=${colorTheme}ae" \
+        "--line-color=ffffff00" \
+        "--keyhl-color=00000080" \
+        "--ringver-color=00000000" \
+        "--separator-color=22222260" \
+        "--insidever-color=${colorTheme}ac" \
+        "--ringwrong-color=00000055" \
+        "--insidewrong-color=000000ac" )
 
-i3lock -i $bckgImg "${param[@]}"
+i3lock -i $lockBckgFinal "${param[@]}"
 

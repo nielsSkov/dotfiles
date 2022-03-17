@@ -1,0 +1,29 @@
+
+# At boot the error looks like this:
+#############################################################################
+#
+XF86EnableIO: failed to enable I/O ports 0000-03ff (Operation not permitted)
+vesa: Refusing to run on UEFI
+(EE)
+Fatal server error:
+(EE) no screens found(EE)
+(EE)
+Please consult the X.Org Foundation Support at http://wiki.x.org
+Please also check the log file at "~/.local/share/xorg/Xorg.0.log" for additional information. (EE) (EE)
+Server terminated with error (1) closing log file.
+#
+#############################################################################
+
+# To fix it, enable early KMS:
+#############################################################################
+# 
+# Edit mkinitcpio.conf
+# sudo vim /etc/mkinitcpio.conf
+#
+#      MODULES=(intel_agp i915)
+#
+#
+# for details see,
+# https://wiki.archlinux.org/title/Kernel_mode_setting#Early_KMS_start
+#
+#############################################################################
