@@ -1,0 +1,13 @@
+#############################################
+To launch a program with custom options
+#############################################
+
+- Place launch script in this folder
+
+- Name the script the same as the program you want to launch
+
+- In /usr/local/bin/ create a symbolic link to the script (using ln -s)
+
+- Change script permissions to executable (chmod +x)
+
+- No reboot required
