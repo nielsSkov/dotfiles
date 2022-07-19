@@ -5,7 +5,7 @@ sudo gpasswd --add niels lock
 sudo gpasswd --add niels uucp
 
 #this will work, but as /run/lock is created at each boot
-#it will bot persist
+#it will not persist
 sudo chmod 775 /run/lock
 sudo chown :lock /run/lock
 

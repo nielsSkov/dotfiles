@@ -1,0 +1,5 @@
+# USBasp - USB programmer for Atmel AVR controllers
+# Symlink this file in /etc/udev/rules.d
+
+# Set Group for USBasp
+SUBSYSTEM=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05dc", GROUP="uucp"
