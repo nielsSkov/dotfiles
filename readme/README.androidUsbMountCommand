@@ -1,1 +1,6 @@
+
+#mount:
 sudo aft-mtp-mount ~/mnt/usb
+
+#umount:
+sudo fusermount -u ~/mnt/usb
