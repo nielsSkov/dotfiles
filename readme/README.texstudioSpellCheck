@@ -1,1 +1,11 @@
-sudo pacman -S hunspell hunspell-en_us hyphen-en libmythes
+sudo pacman -S hunspell hunspell-en_us hyphen-en libmythe
+
+1. In TeXstudio under "Options" menu select "Configure TeXstudio".
+
+2. Under "Spell Check" click the folder button at the right end of "Spelling Dictionary Directories"
+
+3. Navigate to /usr/share/hunspell
+
+4. Ignore that the "Directory:" text box is empty and press the "Choose" button to select the current folder
+
+5. Select the dictionary from the "Default Language" drop-down list and press OK
