@@ -18,7 +18,7 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 # lock screen (mode_switch = AltGr)
-mode_switch + l
+Mode_switch + l
 	$HOME/dotfiles/lock.sh --text "you know what to do"
 
 # toggle between play/pause
