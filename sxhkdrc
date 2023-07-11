@@ -1,49 +1,34 @@
-#directory /home/$USER/.config/sxhkd/sxhkdrc
-
-#
+#------------------------------------------------
 # wm independent hotkeys
-#
+#------------------------------------------------
 
-# terminal emulator
+#terminal emulator
 super + Return
-	termite
+	alacritty
 
-# program launcher
+#program launcher
 super + space
 	$HOME/dotfiles/dmenu.sh &
 #	dmenu_run
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd > .sxhkd.log
 
 # lock screen (mode_switch = AltGr)
-Mode_switch + l
-	$HOME/dotfiles/lock.sh --text "you know what to do"
-
-# toggle between play/pause
-XF86AudioPlay
-  playerctl play-pause
-# skip to the next track
-XF86AudioNext
-  playerctl next
-# skip to the previous track
-XF86AudioPrev
-  playerctl previous
+#Mode_switch + l
+#	$HOME/dotfiles/lock.sh --text "you know what to do"
 
 
-#
+#------------------------------------------------
 # bspwm hotkeys
-#
+#------------------------------------------------
 
-# quit bspwm normally
-super + alt + Escape
-	bspc quit
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
 
-# SYNTAX EXPLAINED (example)
-# kill focused application:   super+shift+w  ->  bspc node -k
-# close focused window only:  super+w        ->  bspc node -c
-# _ = no-key-press
+# close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
 
@@ -51,17 +36,30 @@ super + {_,shift + }w
 super + m
 	bspc desktop -l next
 
-# if the current node is automatic, send it to the last manual, otherwise pull the last leaf
+# send the newest marked node to the newest preselected node
 super + y
-	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
+	bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest node
+# swap the current node and the biggest window
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.window
 
-#
+#------------------------------------------------
+# user defined hotkeys
+#------------------------------------------------
+
+# brightness
+#brightnessDir="/sys/class/backlight/intel_backlight/brightness"
+
+XF86MonBrightnessDown
+	read tmpVar < /sys/class/backlight/intel_backlight/brightness && expr $tmpVar - 20 > /sys/class/backlight/intel_backlight/brightness
+
+XF86MonBrightnessUp
+	read tmpVar < /sys/class/backlight/intel_backlight/brightness && expr $tmpVar + 20 > /sys/class/backlight/intel_backlight/brightness
+
+#------------------------------------------------
 # state/flags
-#
+#------------------------------------------------
 
 # set the window state
 super + {t,shift + t,s,f}
@@ -71,9 +69,10 @@ super + {t,shift + t,s,f}
 super + ctrl + {x,y,z}
 	bspc node -g {locked,sticky,private}
 
-#
-# focus/swap
-#
+
+#------------------------------------------------
+# focus/swap 
+#------------------------------------------------
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -85,7 +84,7 @@ super + {p,b,comma,period}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -101,33 +100,13 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
-####### focus or send to the given desktop #############
-                                                       #
-super + {_,shift + }{1-7,0}
-	bspc {desktop -f,node -d} '^{1-7,8}'
-                                                       #
-super + {_,shift + }{8,9}
-	bspc {desktop -f,node -d} '^{9,10}'
-                                                       #
-######## IMPORTANT NOTE ################################
-#                                                      #
-#  This setup assigns keyboard shortcuts to desktops,  #
-#  however, it also swiches the "normal"               #
-#  keyboard-desktop association, such that,            #
-#  shortcut 8 accesses desktop 10 and                  #
-#  shortcut 0 accesses desktop 8                       #
-#  This is a way to achieve the folloing setup         #
-#  (as persived by user)                               #
-#                                                      #
-#  display:   desktops:                                #
-#  primary    1 2 3 4 5 6 7     0                      #
-#  secondary                8 9                        #
-#                                                      #
-########################################################
+# focus or send to the given desktop
+super + {_,shift + }{0-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# preselect
-#
+#------------------------------------------------
+# preselect 
+#------------------------------------------------
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -145,9 +124,9 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
+#------------------------------------------------
 # move/resize
-#
+#------------------------------------------------
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
@@ -160,20 +139,3 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-#
-# volume control
-#
-
-XF86AudioRaiseVolume
-	amixer set Master 5%+
-XF86AudioLowerVolume
-	amixer set Master 5%-
-XF86AudioMute
-	amixer set Master toggle
-
-#
-# display control
-#
-
-XF86Display
-  $HOME/dotfiles/displaySetup.sh
