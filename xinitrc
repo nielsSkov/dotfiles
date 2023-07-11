@@ -57,3 +57,4 @@ sxhkd &
 
 #start window manager
 bspwm -c $HOME/.config/bspwm/bspwmrc
+
