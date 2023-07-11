@@ -10,7 +10,19 @@ mv /etc/systemd/system/getty.target.wants/getty@tty1.service /etc/systemd/system
 #create a symbolic link to apply the new service
 ln -s /etc/systemd/system/autologin@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
 
-#make sure that the ~/.bash_profile contains,
+#create directory for auto login config
+mkdir /etc/systemd/system/getty@tty1.service.d
+
+#create auto login config
+vim /etc/systemd/system/getty@tty1.service.d/autologin.conf
+
+#write the following in the new autologin.conf file
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin niels %I $TERM
+
+#make sure that the ~/.bash_profile contains
+#(okay too comment out whatever is already in this file)
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec startx
 fi

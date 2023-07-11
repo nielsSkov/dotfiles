@@ -55,10 +55,8 @@ else
     convert $wallpaper -resize 2880 -background Black \
 	    -gravity center -extent $res -blur 30x30 \
 	    $lockBckg
-    echo "im here"
   fi
   bckgImg=$lockBckg
-  echo "also here"
 fi
 
 txtGeometry="+0+250"

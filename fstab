@@ -1,0 +1,8 @@
+
+# <file system> <dir> <type> <options> <dump> <pass>
+
+# /dev/nvme0n1p5
+UUID=UUIDUUIDUUIDUUID	/share/mount/point	ntfs	defaults,rw,exec,uid=user,gid=user,dmask=0022,fmask=0133,errors=remount-ro	0	0
+
+# link directories
+/share/mount/point	/home/path/share	none	defaults,bind									0	0
