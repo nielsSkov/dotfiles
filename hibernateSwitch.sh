@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# first follow instructions in: readme/README.hibernate
+
 # place (or link) me in /lib/systemd/system-sleep/
 
 # this script runs pre and post hibernation

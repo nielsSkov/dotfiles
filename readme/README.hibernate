@@ -20,7 +20,7 @@
 # 
 # 
 # Include resume as hook in initramfs:
-# edit /etc/mkinitcpio.cfg
+# edit /etc/mkinitcpio.conf
 # insert resume here:
 # HOOKS=(base udev autodetect keyboard modconf block filesystems resume fsck)
 # 

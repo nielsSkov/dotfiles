@@ -1,0 +1,7 @@
+#the two prightness control keys (F4 and F5) are enabled in
+#   
+#  sxhkdrc
+#
+#to enable this function, give the user control of the brightness setting:
+
+sudo chown niels:niels /sys/class/backlight/intel_backlight/brightness
