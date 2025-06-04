@@ -1,0 +1,2 @@
+ACTION=="change", SUBSYSTEM=="drm", RUN+="/usr/local/bin/autorandr-systemd-user.sh"
+

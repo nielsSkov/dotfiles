@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export DISPLAY=:0
+
+source "$HOME/dotfiles/work/env-vars"
+
+"$HOME/.config/bspwm/layout"
+
+feh --bg-fill "$wallpaper"
+

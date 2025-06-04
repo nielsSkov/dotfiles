@@ -12,7 +12,7 @@ ExecStart=$Home/dotfiles/lock.sh --text "welcome back"
 WantedBy=suspend.target
 
 #place in
-#etc/systemd/system/suspendlock@anders.service
+#etc/systemd/system/suspendlock@niels.service
 #
 #activate by
 #sudo systemctl enable suspendlock@niels

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+autorandr --change
+
+profile=$(autorandr --current | head -n1)
+
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
+mirror=false
+
+# mirror all unknown screens (if any) from eDP-1
+if [[ "$profile" == "undocked" || -z "$profile" ]]; then
+    for monitor in $(xrandr --query | awk '/ connected/ && !/eDP-1/ {print $1}'); do
+        xrandr --output eDP-1 --mode 1920x1080
+        xrandr --output "$monitor" --mode 1920x1080 --same-as eDP-1
+		mirror=true
+    done
+fi
+
+case "$profile" in
+    docked|docked-lid-closed)
+        bspc monitor DP-1-1-6 -d I II III IV V
+        bspc monitor DP-1-2   -d VI VII VIII IX X
+        ;;
+    docked2|docked2-lid-closed)
+        bspc monitor DP-3-1-6 -d I II III IV V
+        bspc monitor DP-3-2   -d VI VII VIII IX X
+        ;;
+    undocked|"")
+        bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+        ;;
+esac
+
+bspc wm --adopt-orphans
+
+if $mirror; then
+	for mon in $(bspc query -M | grep -v eDP-1); do
+		bspc monitor "$mon" -r
+	done
+fi
+
