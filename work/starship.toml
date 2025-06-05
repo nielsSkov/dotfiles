@@ -1,0 +1,59 @@
+add_newline = false
+format = """$directory$git_branch$git_state$git_status$cmd_duration ∣ $battery ∣ $time
+$character"""
+
+[time]
+disabled = false
+format = "[⧖ $time]($style) "
+time_format = "%H:%M:%S"
+style = "bold purple"
+
+[battery]
+disabled = false
+full_symbol = "󰁹 "
+unknown_symbol = "󰁽 "
+empty_symbol = "󰂎 "
+format = "[$symbol$percentage]($style) "
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 80
+style = "bold purple"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 60
+style = "bold cyan"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+discharging_symbol = "  "
+charging_symbol = "  "
+
