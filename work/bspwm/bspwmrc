@@ -4,6 +4,8 @@
 # pkill -f xdg-desktop-portal-gnome
 pkill -f ibus-daemon
 
+. "$HOME/dotfiles/work/env-vars"
+
 "$HOME/.config/bspwm/layout"
 
 pgrep -x sxhkd > /dev/null || sxhkd &
