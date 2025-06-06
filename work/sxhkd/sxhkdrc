@@ -18,6 +18,9 @@ super + Escape
 ctrl + shift + l
 	$HOME/dotfiles/work/lock.sh --text "you know what to do"
 
+super + period
+    rofimoji --action copy --selector-args "-theme $HOME/.config/rofimoji/dark-theme.rasi"
+
 #
 # bspwm hotkeys
 #
