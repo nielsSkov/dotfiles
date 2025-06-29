@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	$HOME/dotfiles/dmenu.sh &
+	$HOME/dotfiles/work/dmenu.sh &
 
 # make sxhkd reload its configuration files:
 super + Escape

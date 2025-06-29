@@ -1,0 +1,4 @@
+# to get the theme pack for alacritty
+
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+

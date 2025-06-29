@@ -8,7 +8,7 @@ super + Return
 
 #program launcher
 super + space
-	$HOME/dotfiles/dmenu.sh &
+	$HOME/dotfiles/arch/dmenu.sh &
 #	dmenu_run
 
 # make sxhkd reload its configuration files:
@@ -17,7 +17,7 @@ super + Escape
 
 # lock screen (mode_switch = AltGr)
 ctrl + shift + l
-	$HOME/dotfiles/lock.sh --text "you know what to do"
+	$HOME/dotfiles/arch/lock.sh --text "you know what to do"
 
 
 #------------------------------------------------

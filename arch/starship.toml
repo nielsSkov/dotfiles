@@ -1,0 +1,69 @@
+
+add_newline = false
+
+format = """
+$username$hostname$localip$shlvl$singularity$kubernetes$nats\
+$directory$vcsh$fossil_branch$fossil_metrics$git_branch$git_commit$git_state$git_metrics$git_status\
+$hg_branch$pijul_channel$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet\
+$elixir$elm$erlang$fennel$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$mojo\
+$nim$nodejs$ocaml$odin$opa$perl$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust\
+$scala$solidity$swift$terraform$typst$vlang$vagrant$zig$buf$guix_shell$nix_shell$conda$pixi\
+$meson$spack$memory_usage$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$custom$sudo\
+$cmd_duration ∣ $battery ∣ $time
+$container$netns$os$shell$character"""
+
+[time]
+disabled = false
+format = "[⧖ $time]($style) "
+time_format = "%H:%M:%S"
+style = "bold purple"
+
+[battery]
+disabled = false
+full_symbol = "󰁹 "
+unknown_symbol = "󰁽 "
+empty_symbol = "󰂎 "
+format = "[$symbol$percentage]($style) "
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 80
+style = "bold purple"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 60
+style = "bold cyan"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+discharging_symbol = "  "
+charging_symbol = "  "
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+discharging_symbol = "  "
+charging_symbol = "  "
+

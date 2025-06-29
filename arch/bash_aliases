@@ -1,3 +1,4 @@
+alias ll='ls -alF --color=auto'
 alias docked="dockd --set docked"
 alias undocked="dockd --set undocked"
 alias ssh="TERM=xterm-256color ssh"
