@@ -47,7 +47,7 @@ xset s off -dpms &
 xsetroot -cursor_name left_ptr &
 
 #set danish keyboard map
-setxkbmap dk
+setxkbmap dk &
 
 #start compositor
 picom -b &

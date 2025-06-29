@@ -1,3 +1,5 @@
+alias docked="dockd --set docked"
+alias undocked="dockd --set undocked"
 alias ssh="TERM=xterm-256color ssh"
-alias vpnSplit="openvpn3 session-start --config splitTunnel"
-alias vpnKillSplit="openvpn3 session-manage --disconnect --config splitTunnel"
+alias vpnSplit="sudo openvpn --config /home/niels/vpnconfigs/splitTunnel.ovpn --daemon"
+alias vpnKillSplit='sudo pkill -f "/home/niels/vpnconfigs/splitTunnel.ovpn"'

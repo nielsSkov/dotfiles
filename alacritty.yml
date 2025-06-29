@@ -878,8 +878,6 @@ colors:
 
     dim_foreground: '0x685E4A'
     bright_foreground: '0x1C1508'
-    dim_background: '0x202322'
-    bright_background: '0x353433'
 
   # Cursor colors
   cursor:
@@ -894,7 +892,6 @@ colors:
     cyan: '0x5e8d87'
     green: '0x8c9440'
     magenta: '0x85678f'
-    orange: '0xcc6953'
     red: '0xa54242'
     white: '0x707880'
     yellow: '0xde935f'

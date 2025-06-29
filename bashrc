@@ -9,3 +9,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi
+
+eval "$(starship init bash)"
+

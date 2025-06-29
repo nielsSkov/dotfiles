@@ -1,0 +1,5 @@
+pacaur -S openvpn3
+
+#see bash_aliases for commands
+
+#for config see dotfiles/vpn/
