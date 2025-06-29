@@ -1,0 +1,9 @@
+# see dotfiles/vconsole.conf for tty keymap
+
+# for global X keymap do this,
+sudo localectl set-x11-keymap dk
+
+# this can be used to change keymap on the fly in x
+setxkbmap dk
+# (usually not needed)
+
