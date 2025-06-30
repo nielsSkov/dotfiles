@@ -38,7 +38,7 @@ xinput set-prop "ASUE140D:00 04F3:31B9 Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "ASUE140D:00 04F3:31B9 Touchpad" "libinput Accel Speed" 0.7
 
 #lock screen on startup
-$HOME/dotfiles/lock.sh --text "welcome"
+$HOME/dotfiles/arch/lock.sh --text "welcome"
 
 #disable screen timeout
 xset s off -dpms &
