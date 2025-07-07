@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# Keyboard layout
+riverctl keyboard-layout dk
+
+# Start BSP-style layout engine with gaps
+river-bsp-layout --inner-gap 5 --outer-gap 10 --split-perc 0.5 &
+
+# Use this layout by default
+riverctl default-layout bsp-layout
+
+# Enable key repeat and mouse warp
+riverctl set-repeat 50 300
+riverctl set-cursor-warp on
+
+# Launch notification daemon
+mako &
+
+# Modifier key
+mod="Super"
+
+# Focus movement (vim-style)
+riverctl map normal $mod H focus-view left
+riverctl map normal $mod J focus-view down
+riverctl map normal $mod K focus-view up
+riverctl map normal $mod L focus-view right
+
+# Move windows (vim-style)
+riverctl map normal $mod+Shift H move-view left
+riverctl map normal $mod+Shift J move-view down
+riverctl map normal $mod+Shift K move-view up
+riverctl map normal $mod+Shift L move-view right
+
+# Spawn terminal
+riverctl map normal $mod Return spawn alacritty
+
+# Menu launcher (styled like dmenu)
+riverctl map normal $mod D spawn 'wofi --show drun --location top --width 100% --height 24px'
+
+# Close window (you asked for Super+W)
+riverctl map normal $mod W close
+
+# Workspaces 1–9
+for i in $(seq 1 9); do
+  riverctl map normal $mod $i set-focused-tags $((1 << ($i - 1)))
+  riverctl map normal $mod+Shift $i set-view-tags $((1 << ($i - 1)))
+done
+

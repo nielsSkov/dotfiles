@@ -1,0 +1,11 @@
+xoffset=5px
+yoffset=5px
+width=1430px
+lines=1
+orientation=horizontal
+dynamic_lines=false
+hide_scroll=true
+gtk_dark=true
+prompt=
+no_actions=true
+
