@@ -1,0 +1,53 @@
+#window {
+  margin: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+#outer-box {
+  background-color: rgba(30, 30, 30, 0.85);
+  border-radius: 0px;
+}
+
+#input {
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 1px 6px;
+  font-size: 12px;
+}
+
+#input image {
+  all: unset;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  -gtk-icon-source: none;
+  color: transparent;
+}
+#input * {
+  all: unset;
+  background: none;
+  color: inherit;
+  -gtk-icon-source: none;
+}
+
+
+#entry {
+  font-size: 12px;
+  padding: 6px 6px;
+}
+
+#entry:selected {
+  background-color: rgba(30, 30, 30, 0.85);
+  outline: none;
+}
+
+#scroll {
+  margin: 0;
+}
+
