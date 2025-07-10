@@ -2,9 +2,13 @@
 # ~/.bash_profile
 #
 
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    exec startx
+if [[ -z $WAYLAND_DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    exec Hyprland
 fi
+
+#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#    exec startx
+#fi
 
 # [[ -f ~/.bashrc ]] && . ~/.bashrc
 

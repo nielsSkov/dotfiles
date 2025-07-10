@@ -1,0 +1,40 @@
+# -----------------------------------------
+# ----- switch to hyprland from bspwm -----
+# -----------------------------------------
+
+# disable autorandr service if running
+
+systemctl --user disable --now autorandr-scan.service
+sudo pkill -f autorandr
+
+
+# in .bash_profile, comment/uncomment following sections like this,
+
+if [[ -z $WAYLAND_DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    exec Hyprland
+fi
+
+# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#     exec startx
+# fi
+
+
+# -----------------------------------------
+# ----- switch to bspwm from hyprland -----
+# -----------------------------------------
+
+# if relevan, enable autorandr service
+
+systemctl --user enable --now autorandr-scan.service
+
+
+# in .bash_profile, comment/uncomment following sections like this,
+
+# if [[ -z $WAYLAND_DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#     exec Hyprland
+# fi
+
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    exec startx
+fi
+
