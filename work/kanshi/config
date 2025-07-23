@@ -1,0 +1,28 @@
+
+profile undocked {
+    exec hyprctl keyword monitor "eDP-1,1920x1200@60Hz,0x0,1.2"
+
+    output "BOE 0x0A31 Unknown" enable position 0,0 scale 1.2
+}
+
+profile docked {
+    output "Samsung Electric Company LS27A80 H4ZT700149" enable mode 3840x2160@59.99600 position 3840,0 scale 1.5
+    output "Samsung Electric Company LS27A80 H4ZT700166" enable mode 3840x2160@59.99700 position 1280,0 scale 1.5
+    output "BOE 0x0A31 Unknown" disable
+
+    exec ~/.config/hypr/assign-workspaces.sh
+}
+
+profile docked_lid_closed {
+    output "Samsung Electric Company LS27A80 H4ZT700149" enable mode 3840x2160@59.99600 position 3840,0 scale 1.5
+    output "Samsung Electric Company LS27A80 H4ZT700166" enable mode 3840x2160@59.99700 position 1280,0 scale 1.5
+
+    exec ~/.config/hypr/assign-workspaces.sh
+}
+
+profile hdmi_mirror {
+    output "HDMI-A-1" enable
+    output "eDP-1" enable
+    exec hyprctl keyword monitor "HDMI-A-1,1920x1200@60Hz,0x0,1.0,mirror,eDP-1"
+}
+
