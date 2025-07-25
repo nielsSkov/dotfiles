@@ -15,4 +15,4 @@ fi
 # [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # Created by `pipx` on 2025-06-06 09:06:02
-export PATH="$PATH:/home/niels/.local/bin"
+
