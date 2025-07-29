@@ -1,4 +1,4 @@
 #!/bin/bash
 export GRIMBLAST_EDITOR=swappy
-exec /usr/local/bin/grimblast_orig edit area
+exec /usr/local/lib/grimblast/orig edit area
 
