@@ -33,7 +33,7 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-eval "$(starship init bash)"
-
 source ~/.venv/bin/activate
+
+eval "$(starship init bash)"
 
