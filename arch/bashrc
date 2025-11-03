@@ -13,5 +13,8 @@ if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
 
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 eval "$(starship init bash)"
 
