@@ -5,12 +5,28 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
-
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
+fi
+
+# ignore history entries that start with space or is a duplicate
+HISTCONTROL=ignorespace:ignoredups
+
+# append to history file (don't overwrite)
+shopt -s histappend
+
+# max number of commands in history for each active session
+HISTSIZE=1000
+# max number of commands in history file inherited by new sessions
+HISTFILESIZE=2000
+
+# tab completion for commands like git, docker, etc.
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
 
 bind '"\e[A": history-search-backward'
