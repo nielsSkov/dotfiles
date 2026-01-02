@@ -22,3 +22,8 @@ style = "Italic"
 family = "FiraCode Nerd Font"
 style = "Bold Italic"
 
+[bell]
+duration = 0
+animation = "Linear"
+color = "#000000"
+

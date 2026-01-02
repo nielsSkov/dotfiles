@@ -1,0 +1,34 @@
+{
+  "layer": "overlay",
+  "position": "top",
+  "height": 4,
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-right": ["custom/pomo", "clock"],
+
+  "hyprland/workspaces": {
+    "format": " ",
+    "persistent-workspaces": {
+      "*": 10
+    }
+  },
+
+  "custom/pomo": {
+    "exec": "~/.config/waybar/pomo_progress.sh",
+    "interval": 1,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": false,
+    "min-length": 153,
+    "align": 0,
+    "justify": "left",
+    "on-click": "~/.config/waybar/pomo_toggle.sh",
+    "on-click-right": "pomodoro-cli stop"
+  },
+
+  "clock": {
+    "format": "{:%H:%M  %Y-%m-%d}",
+    "tooltip": false
+  }
+}
+
