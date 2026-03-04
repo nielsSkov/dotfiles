@@ -1,3 +1,7 @@
 [options]
 background = eeeeee
+overlay_font = Monospace:10
+overlay_text = $(basename "$imv_current_file")
+overlay_position_bottom = true
+overlay_background_alpha = c0
 

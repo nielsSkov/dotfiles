@@ -4,6 +4,22 @@
 
 [[ -f ~/.profile ]] && . ~/.profile
 
+# Start/connect to ssh-agent (for all login shells)
+if [ -n "$SSH_AUTH_SOCK" ]; then
+    if ! ssh-add -l &>/dev/null && [ "$?" != "1" ]; then
+        unset SSH_AUTH_SOCK
+        unset SSH_AGENT_PID
+    fi
+fi
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    RUNNING_AGENT="$(ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]')"
+    if [ "$RUNNING_AGENT" = "0" ]; then
+        ssh-agent -s &> $HOME/.ssh/ssh-agent
+    fi
+    eval $(cat $HOME/.ssh/ssh-agent) > /dev/null
+    ssh-add $HOME/.ssh/id_ed25519_work 2> /dev/null
+fi
+
 if [[ -z $WAYLAND_DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec Hyprland
 fi

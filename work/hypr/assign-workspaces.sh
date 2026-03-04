@@ -25,7 +25,7 @@ workspace=9,monitor:$RIGHT
 workspace=10,monitor:$RIGHT
 EOF
 
-hyprctl reload
+# hyprctl reload
 
 for i in {1..10}; do
     hyprctl dispatch workspace "$i"

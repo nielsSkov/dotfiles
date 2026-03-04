@@ -33,6 +33,11 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+# Load SSH agent info for terminal sessions
+if [ -f "$HOME/.ssh/ssh-agent" ]; then
+    eval $(cat $HOME/.ssh/ssh-agent) > /dev/null
+fi
+
 source ~/.venv/bin/activate
 
 eval "$(starship init bash)"
