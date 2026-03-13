@@ -13,7 +13,7 @@ case "$cls" in
     ;;
   *)
     # inactive/finished/stopped/unknown -> start
-    pomodoro-cli start --duration 25m --silent
+    (pomodoro-cli start --duration 25s --silent --wait && hyprlock) >/dev/null &
     ;;
 esac
 
