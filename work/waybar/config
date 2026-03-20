@@ -14,7 +14,7 @@
   },
 
   "custom/pomo": {
-    "exec": "~/.config/waybar/pomo_progress.sh",
+    "exec": "~/.config/waybar/pomo_progress.py",
     "interval": 1,
     "return-type": "json",
     "format": "{}",
@@ -23,7 +23,7 @@
     "align": 0,
     "justify": "left",
     "on-click": "~/.config/waybar/pomo_toggle.sh",
-    "on-click-right": "pomodoro-cli stop"
+    "on-click-right": "touch ${XDG_CACHE_HOME:-$HOME/.cache}/pomo_cancel; pomodoro-cli stop"
   },
 
   "clock": {
@@ -31,4 +31,3 @@
     "tooltip": false
   }
 }
-

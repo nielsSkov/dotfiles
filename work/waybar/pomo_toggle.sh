@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 j="$(pomodoro-cli status --format json 2>/dev/null || true)"
-cls="$(printf '%s' "$j" | sed -n 's/.*"class":"\([^"]*\)".*/\1/p')"
-txt="$(printf '%s' "$j" | sed -n 's/.*"text":"\([^"]*\)".*/\1/p')"
+cls="$(printf '%s' "$j" | jq -r '.class // empty')"
+txt="$(printf '%s' "$j" | jq -r '.text // empty')"
 
 case "$cls" in
   running)
@@ -13,7 +13,20 @@ case "$cls" in
     ;;
   *)
     # inactive/finished/stopped/unknown -> start
-    (pomodoro-cli start --duration 25s --silent --wait && hyprlock) >/dev/null &
+    CANCEL="${XDG_CACHE_HOME:-$HOME/.cache}/pomo_cancel"
+    rm -f "$CANCEL"
+    pomodoro-cli start --duration 25m --silent
+    (
+      while sleep 5; do
+        [ -f "$CANCEL" ] && rm -f "$CANCEL" && exit 0
+        s="$(pomodoro-cli status --format json 2>/dev/null || true)"
+        c="$(printf '%s' "$s" | jq -r '.class // empty')"
+        case "$c" in
+          finished) hyprlock; exit 0 ;;
+          running|paused) ;;
+          *) exit 0 ;;
+        esac
+      done
+    ) >/dev/null 2>&1 &
     ;;
 esac
-
