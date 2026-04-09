@@ -1,9 +1,6 @@
 #!/bin/bash
-ELECTRON_ENABLE_HIDPI_SCALING=1 \
-exec ~/.local/opt/outlook/outlook \
+exec google-chrome-stable \
+  --app-id=eoficlgicibekocmfdomjbfnjmehnhcd \
   --enable-features=UseOzonePlatform \
   --ozone-platform=wayland \
-  --user-data-dir=/home/niels/.config/outlook-nativefier-profile \
-  --disk-cache-dir=/home/niels/.cache/outlook-nativefier-cache \
   "$@"
-

@@ -1,6 +1,6 @@
 #!/bin/bash
 exec google-chrome-stable \
-  --app-id=ompifgpmddkgmclendfeacglnodjjndh \
+  --app-id=nldgffedlondoonigohhmfafdggepdfk \
   --enable-features=UseOzonePlatform \
   --ozone-platform=wayland \
   "$@"
