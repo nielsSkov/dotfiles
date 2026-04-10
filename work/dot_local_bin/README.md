@@ -21,5 +21,6 @@ ln -s ~/dotfiles/work/dot_local_bin/<app> ~/.local/bin/<app>
 | word | Electron (Nativefier) | Microsoft Word |
 | chat | Electron (Nativefier) | Microsoft M365 Chat |
 | spotify | Electron (Nativefier) | Spotify |
+| freecad | AppImage | FreeCAD 1.1.0 — DXF/STEP viewer and editor |
 
-PWA scripts launch installed Chrome apps by their `--app-id`. Electron scripts launch Nativefier-wrapped apps from `~/.local/opt/`.
+PWA scripts launch installed Chrome apps by their `--app-id`. Electron scripts launch Nativefier-wrapped apps from `~/.local/opt/`. AppImage scripts launch self-contained binaries from `~/.local/opt/`.
