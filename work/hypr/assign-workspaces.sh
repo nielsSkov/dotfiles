@@ -6,11 +6,14 @@ get_monitor_name_by_serial() {
         ".[] | select(.description | endswith(\"$serial_suffix\")) .name"
 }
 
-LEFT=$(get_monitor_name_by_serial "H4ZT700166")
-RIGHT=$(get_monitor_name_by_serial "H4ZT700149")
-
-echo "LEFT: $LEFT"
-echo "RIGHT: $RIGHT"
+for attempt in $(seq 1 20); do
+    LEFT=$(get_monitor_name_by_serial "H4ZT700166")
+    RIGHT=$(get_monitor_name_by_serial "H4ZT700149")
+    if [ -n "$LEFT" ] && [ -n "$RIGHT" ]; then
+        break
+    fi
+    sleep 0.5
+done
 
 cat > ~/.config/hypr/my_workspaces.conf <<EOF
 workspace=1,monitor:$LEFT,default:true
@@ -25,12 +28,8 @@ workspace=9,monitor:$RIGHT
 workspace=10,monitor:$RIGHT
 EOF
 
-# hyprctl reload
-
-for i in {1..10}; do
-    hyprctl dispatch workspace "$i"
-    sleep 0.05
-done
+hyprctl reload
+sleep 0.5
 
 for i in {1..5}; do
     hyprctl dispatch moveworkspacetomonitor "$i" "$LEFT"
@@ -40,3 +39,4 @@ for i in {6..10}; do
     hyprctl dispatch moveworkspacetomonitor "$i" "$RIGHT"
 done
 
+hyprctl dispatch workspace 1
