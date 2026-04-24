@@ -3,6 +3,8 @@ profile undocked {
     exec hyprctl keyword monitor "eDP-1,1920x1200@60Hz,0x0,1.2"
 
     output "BOE 0x0A31 Unknown" enable position 0,0 scale 1.2
+
+    exec hyprctl dispatch workspace 1
 }
 
 profile docked {
