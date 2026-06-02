@@ -33,10 +33,8 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-# Load SSH agent info for terminal sessions
-if [ -f "$HOME/.ssh/ssh-agent" ]; then
-    eval $(cat $HOME/.ssh/ssh-agent) > /dev/null
-fi
+# SSH agent managed by gcr-ssh-agent.socket (systemd user service)
+export SSH_AUTH_SOCK="/run/user/1000/gcr/ssh"
 
 source ~/.venv/bin/activate
 
