@@ -14,7 +14,7 @@
   },
 
   "custom/pomo": {
-    "exec": "~/.config/waybar/pomo_progress.sh",
+    "exec": "~/.config/waybar/pomo_progress.py",
     "interval": 1,
     "return-type": "json",
     "format": "{}",
