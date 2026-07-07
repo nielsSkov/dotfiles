@@ -38,5 +38,7 @@ export SSH_AUTH_SOCK="/run/user/1000/gcr/ssh"
 
 source ~/.venv/bin/activate
 
+eval "$(mise activate bash)"
+
 eval "$(starship init bash)"
 
